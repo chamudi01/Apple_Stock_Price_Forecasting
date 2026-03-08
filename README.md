@@ -1,148 +1,157 @@
-🍎 Apple Stock Price Forecasting using ARIMA & SARIMA
-📌 Project Overview
+# Apple Stock Price Forecasting using ARIMA & SARIMA
 
-This project focuses on forecasting Apple Inc. (AAPL) stock prices using time series forecasting models. The study applies ARIMA and SARIMA models to historical Apple stock price data to identify patterns and generate future price predictions.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Jupyter](https://img.shields.io/badge/Notebook-Jupyter-orange)
+![TimeSeries](https://img.shields.io/badge/Model-Time%20Series-green)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-Time series forecasting plays a crucial role in financial analysis and investment decision-making. By modeling historical stock price behavior, the project aims to evaluate the effectiveness of statistical forecasting models for predicting future stock prices.
+## 📌 Project Overview
 
-📊 Dataset
+This project focuses on forecasting **Apple Inc. (AAPL) stock prices** using **time series forecasting models**.  
+The study applies **ARIMA** and **SARIMA** models to historical Apple stock price data to analyze patterns and predict future price movements.
 
-The dataset used in this project contains historical stock price information for Apple Inc. (AAPL).
+Time series forecasting helps investors and analysts understand potential market trends by analyzing historical data.
 
-Main attributes include:
+---
 
-Date
+## 📊 Dataset
 
-Open Price
+The dataset contains **historical Apple stock price data**.
 
-High Price
+### Main Features
+- Date  
+- Open Price  
+- High Price  
+- Low Price  
+- Close Price  
+- Adjusted Close Price  
+- Volume  
 
-Low Price
+For forecasting purposes, the **Close Price** is used as the main variable.
 
-Close Price
+---
 
-Adjusted Close Price
+## 🧹 Data Preprocessing
 
-Volume
+The following preprocessing steps were performed before modeling:
 
-The Close Price is used as the primary variable for time series forecasting.
+- Converted **Date column to datetime format**
+- Set **Date as the index**
+- Checked and handled **missing values**
+- **Detected outliers and replaced them with mean values**
+- Sorted the dataset chronologically
+- Selected **Close Price** for forecasting
+- Split the dataset into **training and testing sets**
 
-🧹 Data Preprocessing
+---
 
-Several preprocessing steps were performed to prepare the dataset for modeling:
+## 📈 Stationarity Analysis
 
-Converted the Date column to datetime format
+Time series models such as **ARIMA** require the data to be **stationary**.  
+The **Augmented Dickey-Fuller (ADF) Test** was applied to verify stationarity.
 
-Set Date as the index for time series analysis
+If the series showed non-stationarity, **first-order differencing** was applied to stabilize the mean and remove trends.
 
-Checked and handled missing values
+After differencing, the series fluctuates around a constant mean, making it suitable for ARIMA modeling.
 
-Detected and replaced outliers using mean values
+---
 
-Sorted the dataset in chronological order
-
-Selected the Close price for forecasting
-
-Split the dataset into training and testing sets
-
-These steps ensure the data is clean and suitable for time series modeling.
-
-📈 Stationarity Analysis
-
-Time series models such as ARIMA require the data to be stationary. The Augmented Dickey-Fuller (ADF) test was used to determine stationarity.
-
-If the series was non-stationary, first-order differencing was applied to stabilize the mean and remove trends.
-
-After differencing, the transformed series fluctuates around a constant mean, making it suitable for ARIMA modeling.
-
-🔎 Model Identification
+## 🔍 Model Identification
 
 To determine the appropriate ARIMA parameters, the following plots were analyzed:
 
-Autocorrelation Function (ACF)
+- **ACF (Autocorrelation Function)**
+- **PACF (Partial Autocorrelation Function)**
 
-Partial Autocorrelation Function (PACF)
+These plots help determine suitable values for **p** and **q** parameters.
 
-These plots help identify the values of p (autoregressive) and q (moving average) parameters.
+### Figures
+- 📊 **Figure 7:** ACF Plot  
+- 📊 **Figure 8:** PACF Plot  
 
-📊 Insert Figure: ACF Plot
-📊 Insert Figure: PACF Plot
+---
 
-🤖 Models Used
-ARIMA Model
+## 🤖 Models Used
 
-The AutoRegressive Integrated Moving Average (ARIMA) model is used to capture temporal dependencies in the stock price data.
+### ARIMA Model
+
+The **AutoRegressive Integrated Moving Average (ARIMA)** model captures temporal dependencies in the data.
+
+Components:
+
+- **AR (p)** → Captures dependence on past values  
+- **I (d)** → Removes non-stationarity through differencing  
+- **MA (q)** → Captures noise and shock effects  
+
+---
+
+### SARIMA Model
+
+The **Seasonal ARIMA (SARIMA)** model extends ARIMA by incorporating **seasonal patterns**.
 
 Model components:
 
-AR (p): Captures dependence on previous values
-
-I (d): Differencing to remove non-stationarity
-
-MA (q): Captures error relationships
-
-The ARIMA model is trained using historical closing prices and used to forecast future values.
-
-SARIMA Model
-
-The Seasonal ARIMA (SARIMA) model extends ARIMA by incorporating seasonal components.
-
-Model components:
-
-Non-seasonal: (p, d, q)
-
-Seasonal: (P, D, Q, s)
+- Non-seasonal: **(p, d, q)**
+- Seasonal: **(P, D, Q, s)**
 
 Where:
 
-P: Seasonal autoregressive order
+- **P** → Seasonal autoregressive order  
+- **D** → Seasonal differencing  
+- **Q** → Seasonal moving average  
+- **s** → Length of seasonal cycle  
 
-D: Seasonal differencing
+SARIMA captures repeating patterns that may exist in stock price data.
 
-Q: Seasonal moving average
+---
 
-s: Length of seasonal cycle
+## 📊 Model Evaluation
 
-SARIMA helps capture repeating patterns or periodic fluctuations in stock price movements.
+The forecasting models are evaluated using:
 
-📊 Model Evaluation
+- **RMSE (Root Mean Squared Error)**
+- **AIC (Akaike Information Criterion)**
 
-The models are evaluated using standard forecasting metrics:
+Lower values indicate better model performance.
 
-RMSE (Root Mean Squared Error)
+---
 
-AIC (Akaike Information Criterion)
-
-Lower RMSE values indicate better predictive performance.
-
-📉 Forecast Visualization
+## 📉 Forecasting Results
 
 The project generates visualizations including:
 
-Historical stock price trends
+- Historical stock price trends
+- ACF and PACF plots
+- Model predictions vs actual values
+- Future stock price forecasts
 
-ACF and PACF plots
+These visualizations help interpret the model performance.
 
-Model predictions vs actual values
+---
 
-Future stock price forecasts
+## 🛠 Technologies Used
 
-These visualizations help interpret the forecasting results.
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Statsmodels
+- Jupyter Notebook
 
-🛠 Technologies Used
+---
 
-Python
+## 📌 Conclusion
 
-Pandas
+This project demonstrates how **ARIMA and SARIMA time series models** can be applied to financial datasets for stock price forecasting.  
 
-NumPy
+Although statistical models capture temporal patterns effectively, real-world stock prices are also influenced by external factors such as economic events, company news, and market sentiment.
 
-Matplotlib
+---
 
-Statsmodels
+## 👨‍💻 Author
 
-Jupyter Notebook
+**Your Name**
 
-📌 Conclusion
+---
 
-This project demonstrates how time series forecasting models such as ARIMA and SARIMA can be applied to financial datasets. The results show that statistical models can capture important temporal patterns in stock prices, although external factors such as market news and economic events may also influence stock behavior.
+⭐ If you found this project useful, consider giving the repository a **star**!
