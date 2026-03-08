@@ -147,5 +147,3 @@ This project demonstrates how **ARIMA and SARIMA time series models** can be app
 Although statistical models capture temporal patterns effectively, real-world stock prices are also influenced by external factors such as economic events, company news, and market sentiment.
 
 ---
-
-⭐ If you found this project useful, consider giving the repository a **star**!
