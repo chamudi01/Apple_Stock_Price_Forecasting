@@ -1,52 +1,137 @@
-Apple Stock Price Forecasting 📈
+🍎 Apple Stock Price Forecasting using ARIMA & SARIMA
+📌 Project Overview
 
-This project focuses on forecasting the stock price of Apple Inc. using historical financial data and time series forecasting techniques. The goal is to analyze historical trends and build predictive models that estimate future stock prices based on past market behavior.
+This project focuses on forecasting Apple Inc. (AAPL) stock prices using time series forecasting models. The study applies ARIMA and SARIMA models to historical Apple stock price data to identify patterns and generate future price predictions.
 
-Project Overview
+Time series forecasting plays a crucial role in financial analysis and investment decision-making. By modeling historical stock price behavior, the project aims to evaluate the effectiveness of statistical forecasting models for predicting future stock prices.
 
-Financial markets generate large volumes of time-dependent data. Time series analysis allows us to identify patterns such as trends, seasonality, and random fluctuations in stock prices.
+📊 Dataset
 
-In this project, historical stock data from 2010–2020 is analyzed using exploratory data analysis (EDA), statistical tests, and forecasting models to predict future Apple stock prices.
+The dataset used in this project contains historical stock price information for Apple Inc. (AAPL).
 
-The notebook demonstrates the full data science workflow:
-
-Data preprocessing
-
-Exploratory Data Analysis (EDA)
-
-Stationarity testing
-
-Time series modeling
-
-Model evaluation
-
-Stock price forecasting
-
-Dataset
-
-The dataset contains historical daily trading information for Apple stock including:
+Main attributes include:
 
 Date
 
-Open price
+Open Price
 
-High price
+High Price
 
-Low price
+Low Price
 
-Close price
+Close Price
 
-Trading volume
+Adjusted Close Price
 
-Source: Kaggle Apple stock dataset.
+Volume
 
-Technologies Used
+The Close Price is used as the primary variable for time series forecasting.
 
-The project was implemented using the following tools and libraries:
+🧹 Data Preprocessing
+
+Several preprocessing steps were performed to prepare the dataset for modeling:
+
+Converted the Date column to datetime format
+
+Set Date as the index for time series analysis
+
+Checked and handled missing values
+
+Detected and replaced outliers using mean values
+
+Sorted the dataset in chronological order
+
+Selected the Close price for forecasting
+
+Split the dataset into training and testing sets
+
+These steps ensure the data is clean and suitable for time series modeling.
+
+📈 Stationarity Analysis
+
+Time series models such as ARIMA require the data to be stationary. The Augmented Dickey-Fuller (ADF) test was used to determine stationarity.
+
+If the series was non-stationary, first-order differencing was applied to stabilize the mean and remove trends.
+
+After differencing, the transformed series fluctuates around a constant mean, making it suitable for ARIMA modeling.
+
+🔎 Model Identification
+
+To determine the appropriate ARIMA parameters, the following plots were analyzed:
+
+Autocorrelation Function (ACF)
+
+Partial Autocorrelation Function (PACF)
+
+These plots help identify the values of p (autoregressive) and q (moving average) parameters.
+
+📊 Insert Figure: ACF Plot
+📊 Insert Figure: PACF Plot
+
+🤖 Models Used
+ARIMA Model
+
+The AutoRegressive Integrated Moving Average (ARIMA) model is used to capture temporal dependencies in the stock price data.
+
+Model components:
+
+AR (p): Captures dependence on previous values
+
+I (d): Differencing to remove non-stationarity
+
+MA (q): Captures error relationships
+
+The ARIMA model is trained using historical closing prices and used to forecast future values.
+
+SARIMA Model
+
+The Seasonal ARIMA (SARIMA) model extends ARIMA by incorporating seasonal components.
+
+Model components:
+
+Non-seasonal: (p, d, q)
+
+Seasonal: (P, D, Q, s)
+
+Where:
+
+P: Seasonal autoregressive order
+
+D: Seasonal differencing
+
+Q: Seasonal moving average
+
+s: Length of seasonal cycle
+
+SARIMA helps capture repeating patterns or periodic fluctuations in stock price movements.
+
+📊 Model Evaluation
+
+The models are evaluated using standard forecasting metrics:
+
+RMSE (Root Mean Squared Error)
+
+AIC (Akaike Information Criterion)
+
+Lower RMSE values indicate better predictive performance.
+
+📉 Forecast Visualization
+
+The project generates visualizations including:
+
+Historical stock price trends
+
+ACF and PACF plots
+
+Model predictions vs actual values
+
+Future stock price forecasts
+
+These visualizations help interpret the forecasting results.
+
+🛠 Technologies Used
 
 Python
-
-Jupyter Notebook
 
 Pandas
 
@@ -54,84 +139,10 @@ NumPy
 
 Matplotlib
 
-Seaborn
-
 Statsmodels
 
-Scikit-learn
+Jupyter Notebook
 
-Data Preprocessing
+📌 Conclusion
 
-Several preprocessing steps were applied before analysis:
-
-Converting the Date column to datetime format
-
-Setting the Date column as the time index
-
-Cleaning column names
-
-Removing currency symbols and converting values to numeric
-
-Detecting and handling outliers using mean replacement
-
-Sorting data chronologically
-
-These steps ensured the dataset was properly structured for time series analysis.
-
-Exploratory Data Analysis
-
-EDA was conducted to understand the behavior of the dataset.
-
-Key analyses include:
-
-Distribution of stock prices
-
-Time series visualization of Apple closing prices
-
-Trading volume trends
-
-Correlation analysis between price variables
-
-The analysis revealed a strong upward trend in Apple’s stock price over the observed period.
-
-Stationarity Testing
-
-Stationarity was tested using the Augmented Dickey–Fuller Test.
-
-Results showed that the series becomes strongly stationary after first-order differencing, which is necessary for time series modeling.
-
-Forecasting Models
-
-Two main forecasting models were implemented:
-
-ARIMA Model
-
-ARIMA Model was used to capture short-term temporal dependencies in the stock price data.
-
-SARIMA Model
-
-Seasonal ARIMA Model extends ARIMA by incorporating seasonal patterns in the dataset.
-
-The models were trained on 80% of the data and tested on the remaining 20% to evaluate forecasting accuracy.
-
-Model Evaluation
-
-Model performance was evaluated using the following metrics:
-
-RMSE (Root Mean Square Error)
-
-MAE (Mean Absolute Error)
-
-MAPE (Mean Absolute Percentage Error)
-
-These metrics measure how accurately the models predict unseen stock price data.
-
-Results
-
-The results show that:
-
-The ARIMA model captures short-term price momentum effectively
-
-The SARIMA model captures seasonal fluctuations in the data
-
-Both models provide useful insights into stock price dynamics and enable short-term forecasting.
+This project demonstrates how time series forecasting models such as ARIMA and SARIMA can be applied to financial datasets. The results show that statistical models can capture important temporal patterns in stock prices, although external factors such as market news and economic events may also influence stock behavior.
